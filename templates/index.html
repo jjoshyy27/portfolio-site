@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo2.png') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Velasquez | Portfolio</title>
+    <!-- ADD IT HERE -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo2.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <!-- UPDATED LOGO SECTION -->
+        <!-- We use inline styles here to remove the old border box we made for the text version -->
+        <div class="logo" style="border: none; padding: 0;">
+            <a href="{{ url_for('home') }}">
+                <!-- Ensure you renamed your file to 'logo.png' -->
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="JV Logo" style="height: 80px; width: auto; display: block;">
+            </a>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}#work">Work</a></li>
+            <li><a href="{{ url_for('resume') }}">Resume</a></li>
+            <li><a href="{{ url_for('about') }}" class="active-link">About</a></li>
+            <li><a href="{{ url_for('home') }}#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            
+            <div class="hero-text">
+                <h1 class="glitch-text">Joshua Velasquez</h1>
+                <p class="degree">B.S. in Economics <span class="divider">|</span> Specialization in Data Science</p>
+                <p class="roles">Graphic Designer & Marketing Director <span class="accent">///</span> Emory University</p>
+            </div>
+            
+            <div class="hero-image">
+                <!-- Ensure your profile image is named 'profile_small.jpg' or 'profile.jpg' -->
+                <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Joshua Velasquez">
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Portfolio Grid -->
+    <section id="work" class="container">
+        <h2>Selected Works</h2>
+        <div class="grid">
+            {% for project in projects %}
+            <div class="card">
+                <!-- 1. The Linked Image -->
+                <a href="{{ url_for('project_detail', project_id=project.id) }}" class="card-link">
+                    <img src="{{ url_for('static', filename='images/' + project.img) }}" alt="{{ project.title }}" class="card-image">
+                </a>
+                
+                <!-- 2. The Linked Title -->
+                <a href="{{ url_for('project_detail', project_id=project.id) }}" class="card-link">
+                    <h3>{{ project.title }}</h3>
+                </a>
+                
+                <p>{{ project.desc }}</p>
+                
+                <!-- 3. The "Read More" Button -->
+                <a href="{{ url_for('project_detail', project_id=project.id) }}" class="read-more">View Project →</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2>Let's Create</h2>
+        <p>Available for freelance projects and collaborations.</p>
+        <a href="mailto:your.email@emory.edu" class="btn-contact">Get in Touch</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Joshua Velasquez. All Rights Reserved.</p>
+            <div class="socials">
+                <a href="https://www.linkedin.com/in/joshua-velasquez-56b743298" target="_blank">LinkedIn</a>
+                <a href="https://www.instagram.com/jjoshyy.27/" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

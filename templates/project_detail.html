@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo2.png') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Velasquez | Portfolio</title>
+    <!-- ADD IT HERE -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo2.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <!-- UPDATED LOGO SECTION -->
+        <!-- We use inline styles here to remove the old border box we made for the text version -->
+        <div class="logo" style="border: none; padding: 0;">
+            <a href="{{ url_for('home') }}">
+                <!-- Ensure you renamed your file to 'logo.png' -->
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="JV Logo" style="height: 80px; width: auto; display: block;">
+            </a>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}#work">Work</a></li>
+            <li><a href="{{ url_for('resume') }}">Resume</a></li>
+            <li><a href="{{ url_for('about') }}" class="active-link">About</a></li>
+            <li><a href="{{ url_for('home') }}#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container project-page">
+
+        <header class="project-header">
+            <p class="meta-tag">{{ project.year }} <span class="divider">|</span> {{ project.role }}</p>
+            <h1>{{ project.title }}</h1>
+            <div class="line-break"></div>
+        </header>
+
+        <div class="project-hero-container">
+            <img src="{{ url_for('static', filename='images/' + project.img)}}" alt="{{ project.title }}" class="project-main-image">
+        </div>
+
+        <div class="project-content">
+            <div class="content-label">
+                <h3>The Strategy</h3>
+            </div>
+            <div class="content-text">
+                <p>{{ project.content }}</p>
+            </div>
+        </div>
+
+        <!-- CATEGORIZED GALLERIES -->
+        {% if project.galleries %}
+            {% for gallery in project.galleries %}
+            <div class="gallery-container">
+                <h3>{{ gallery.title }}</h3>
+                <div class="gallery-grid">
+                    {% for image in gallery.images %}
+                    <div class="gallery-item">
+                        <!-- TRIGGER: The 'onclick' MUST be on this image tag -->
+                        <img 
+                            src="{{ url_for('static', filename='images/' + image) }}" 
+                            alt="Gallery Image" 
+                            onclick="openLightbox(this)"
+                            class="clickable-image"
+                        >
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        <footer class="project-footer">
+            <a href="{{ url_for('home') }}" class="btn-contact">View Next Project</a>
+        </footer>
+
+    </div>
+
+    <!-- LIGHTBOX CONTAINER -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function openLightbox(imgElement) {
+            console.log("Lightbox clicked!"); // Check your browser console to see if this prints
+            
+            // FIX: 'Id' is lowercase 'd' here
+            var lightbox = document.getElementById("lightbox");
+            var lightboxImg = document.getElementById("lightbox-img");
+            
+            lightbox.style.display = "flex";
+            lightboxImg.src = imgElement.src;
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

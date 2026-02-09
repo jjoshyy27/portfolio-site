@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo2.png') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Velasquez | Portfolio</title>
+    <!-- ADD IT HERE -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo2.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <!-- UPDATED LOGO SECTION -->
+        <!-- We use inline styles here to remove the old border box we made for the text version -->
+        <div class="logo" style="border: none; padding: 0;">
+            <a href="{{ url_for('home') }}">
+                <!-- Ensure you renamed your file to 'logo.png' -->
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="JV Logo" style="height: 80px; width: auto; display: block;">
+            </a>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}#work">Work</a></li>
+            <li><a href="{{ url_for('resume') }}">Resume</a></li>
+            <li><a href="{{ url_for('about') }}" class="active-link">About</a></li>
+            <li><a href="{{ url_for('home') }}#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container about-page">
+        
+        <header class="project-header" style="text-align: left; padding-bottom: 20px;">
+            <p class="meta-tag">The Person Behind the Work</p>
+            <h1 style="font-size: 4rem; text-transform: uppercase;">About Me</h1>
+            <div class="line-break" style="margin: 20px 0;"></div>
+        </header>
+
+        <div class="about-grid">
+            
+            <!-- Main Bio Column -->
+            <div class="bio">
+                <p class="intro-text">Hi, I'm Joshua 👋</p>
+                
+                <p>
+                    I am a Chicago native currently navigating life and academics in Atlanta as a third year student at Emory University. I grew up seeing the world through a lens of design and community, always looking for the <em>why</em> behind the aesthetic.
+                </p>
+                <p>
+                    Managing digital identities is where I found my niche. As the <strong>Regional Marketing Director for Lambda Sigma Upsilon</strong> and <strong>VP of Communications for the Multicultural Greek Council</strong>, I have learned how to turn complex organizational goals into cohesive visual stories. Whether I am managing social media accounts or designing flyers, I focus on a clean, modern look. I usually lean into a specific aesthetic of dark and baby blue.
+                </p>
+                <p>
+                    Beyond my marketing roles, I am deeply invested in the intersection of creativity and storytelling. I enjoy exploring the narrative depth of retro games, an interest that has even led me to storyboard my own game based on personal growth and healing. I am also currently working on my Portuguese skills to expand my perspective and communication reach.
+                </p>
+                <p>
+                    I am driven by the idea that good design and clear communication can build real bridges. I am ready to keep pushing my creative boundaries and contribute to teams that value authenticity, bold ideas, and meaningful impact.
+                </p>
+                
+                <div style="margin-top: 40px;">
+                    <a href="{{ url_for('resume') }}" class="btn-contact">View My Resume</a>
+                </div>
+            </div>
+
+            <!-- Sidebar: Skills & Tools -->
+            <div class="skills-sidebar" style="padding-top: 20px;">
+                
+                <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Joshua Velasquez" style="width: 100%; border-radius: 10px; border: 1px solid #333; margin-bottom: 30px;">
+
+                <div class="skill-group">
+                    <h3>Services</h3>
+                    <ul class="no-bullets">
+                        <li>Brand Identity</li>
+                        <li>Promotional Graphics</li>
+                        <li>Social Media Strategy</li>
+                        <li>Visual Communication</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group" style="margin-top: 30px;">
+                    <!-- CHANGED: Title to Technical Skills -->
+                    <h3>Technical Skills</h3>
+                    <div class="tech-tags">
+                        <!-- UPDATED LIST: Removed C++/Adobe, Added Canva -->
+                        <span>Python</span>
+                        <span>HTML / CSS</span>
+                        <span>Canva</span>
+                        <span>Photography</span>
+                        <span>Excel</span>
+                        <span>VS Code</span>
+                        <span>Social Media Analytics</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Joshua Velasquez. All Rights Reserved.</p>
+            <div class="socials">
+                <a href="https://www.linkedin.com/in/joshua-velasquez-56b743298" target="_blank">LinkedIn</a>
+                <a href="https://www.instagram.com/jjoshyy.27/" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

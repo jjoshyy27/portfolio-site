@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo2.png') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Velasquez | Portfolio</title>
+    <!-- ADD IT HERE -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo2.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Script to disable Right-Click (Prevents "Save As") -->
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+</head>
+
+<body>
+
+    <nav>
+        <!-- UPDATED LOGO SECTION -->
+        <!-- We use inline styles here to remove the old border box we made for the text version -->
+        <div class="logo" style="border: none; padding: 0;">
+            <a href="{{ url_for('home') }}">
+                <!-- Ensure you renamed your file to 'logo.png' -->
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="JV Logo" style="height: 80px; width: auto; display: block;">
+            </a>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}#work">Work</a></li>
+            <li><a href="{{ url_for('resume') }}">Resume</a></li>
+            <li><a href="{{ url_for('about') }}" class="active-link">About</a></li>
+            <li><a href="{{ url_for('home') }}#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container resume-page">
+        
+        <header class="resume-header">
+            <h1>Resume</h1>
+            <!-- Download Button Removed -->
+        </header>
+
+        <!-- THE PDF VIEWER -->
+        <div class="pdf-wrapper">
+            <!-- #toolbar=0 hides the browser's download/print buttons -->
+            <iframe 
+                src="{{ url_for('static', filename='documents/resume.pdf') }}#toolbar=0&navpanes=0&scrollbar=0" 
+                class="pdf-frame"
+                title="Joshua Velasquez Resume">
+            </iframe>
+            
+            <!-- Mobile Fallback -->
+            <div class="mobile-pdf-link">
+                <p>Viewing on a phone? <br> The embedded view might be too small.</p>
+                <a href="{{ url_for('static', filename='documents/resume.pdf') }}" class="read-more">View Resume →</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
